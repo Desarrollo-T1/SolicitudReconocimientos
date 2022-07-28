@@ -1,0 +1,19 @@
+﻿  
+    @{
+        IEnumerable<SolicitudReconocimientos.Models.Reconocimientos> t = ViewBag.total;
+        IEnumerable<SolicitudReconocimientos.Models.Usuario>solicitudes = ViewBag.usuario;
+        var iduser = SessionHelper.GetUser();
+       
+     }
+<a class="dropdown-toggle" data-toggle="dropdown" href="#">
+    <i class="fa fa-user fa-fw"></i>  @foreach (var i in solicitudes)
+    {
+
+        if (iduser == i.id)
+        {
+            <i>HOLA ! </i>@i.Nombre;
+        }
+
+    }
+    <b class="caret"></b>
+</a>

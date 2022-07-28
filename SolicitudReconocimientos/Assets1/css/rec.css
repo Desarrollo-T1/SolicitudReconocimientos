@@ -1,0 +1,126 @@
+
+.margen
+{
+
+    margin-top: 10px;
+    margin-bottom: 30px;
+    margin-right: 20px;
+    margin-left: 70px;
+
+}
+.logo
+{
+	width: 100%;
+	height: 160px;
+}
+.linea
+{
+	width: 100%;
+	height: 20px;
+}
+.encabezado {
+    text-align: center;
+    font-family: HelveticaNeueLT Std;
+    font-size: 26pt;
+    font-weight: normal;
+}
+.reconocimiento
+{
+	text-align: center;
+	font-size: 44pt;
+	font-weight: bolder;
+	font-family:Helvetica;
+	width:100%;
+}
+
+input
+{
+	background-color: transparent;
+	font-family:Helvetica;
+	font-size: 10pt;
+	border: 0px;
+
+}
+textarea
+{
+	background-color: transparent;
+	text-align: center;
+	font-family:Helvetica;
+	font-size: 15pt;
+	border: 0px;
+	width: 800px;
+	height: 20px;
+
+}
+.ul
+{
+	text-align: center;
+	font-family:Helvetica;
+	font-size: 12pt;
+}
+.al
+{
+	text-align:center;
+	font-family:Helvetica;
+	font-size: 18pt;
+
+
+}
+.nombre {
+    text-align: center;
+    font-family: Helvetica;
+    font-size: 29pt;
+    font-weight: bolder;
+    height: 54px;
+    width: 100%;
+    line-height: 5px;
+}
+.el
+{
+	text-align:center;
+	font-family:Helvetica;
+	font-size: 18pt;
+	color: black;
+ 
+
+
+}
+.puesto
+{
+	text-align:center;
+	font-family:Helvetica;
+	font-size: 12pt;
+	height: 25px; 
+}
+.motivo {
+    /*text-justify: auto;*/
+    text-align: center;
+    
+   
+    font-family: HelveticaNeueLT Std;
+    font-size: 17pt;
+    height: 210px;
+    width: 80%;
+    border:1px;
+}
+@font-face {
+    font-family: 'HelveticaNeueLTStd-BdCn';
+    src: url('../font/HelveticaNeueLTStd-BdCn.otf') format('opentype');
+}
+.fecha
+{
+	text-align:center;
+	font-family:Helvetica;
+	font-size: 12pt;
+	height: 25px; 
+}
+
+.folio
+{
+    margin-left:76px;
+	text-align: left;
+	font-family:Helvetica;
+	font-size: 10pt;
+
+
+}

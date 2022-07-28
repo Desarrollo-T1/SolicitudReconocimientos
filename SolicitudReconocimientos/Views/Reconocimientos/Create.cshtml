@@ -1,0 +1,186 @@
+﻿@model SolicitudReconocimientos.Models.Reconocimientos
+
+
+
+@{
+
+    var total = ViewBag.UltimoRegistro;
+    var ceros = "0000";
+    var completo = ceros + total;
+    //Char delimiter = '0';
+    //String[] substrings = total.Split(delimiter);
+    //foreach (var substring in substrings)
+    //{
+    //    Convert.ToInt64(substrings);
+    //var uno = Convert.ToInt64(substrings) + 1;
+    //}
+
+
+
+
+    ViewBag.Title = "Create";
+    Layout = "~/Views/Shared/_Masteradmin.cshtml";
+}
+<hr />
+<br />
+<br />
+
+
+<div class="row">
+    <div class="col-md-12">
+        <div class="well">
+
+            @using (Html.BeginForm("Create", "Reconocimientos", FormMethod.Post))
+            {
+                @Html.AntiForgeryToken()
+                @Html.ValidationSummary()
+                <hr />
+                //Identificador,IdUsuario,Nombre,IdTipoDocumento,Motivo,FechaEvento,FechaRegistro,Autorizado,Archivo,AcuseEntrega"
+
+                <fieldset>
+                    <legend class="text-center header">Nueva solicitud</legend>
+
+                    @*identificador*@
+                    <div class="form-group hidden">
+                        <span class="col-md-1 col-md-offset-2 text-center"><i class="fa fa-user bigicon"></i></span>
+                        <div class="col-md-8">
+
+                            <input id="Identificador" name="Identificador" type="text" placeholder="id usuario" value="1" class="form-control">
+
+                        </div>
+                    </div>
+
+
+
+                    @*idusuario*@
+                    <div class="form-group hidden">
+
+                        <span class="col-md-1 col-md-offset-2 text-center"><i class="fa fa-user bigicon"></i></span>
+                        <div class="col-md-8">
+                            <input id="IdUsuario" name="IdUsuario" type="text" placeholder="id usuario" value="@SessionHelper.GetUser()" class="form-control">
+                        </div>
+                    </div>
+
+                    @*Folio*@
+                    <div class="form-group">
+                        <span class="col-md-1 col-md-offset-2 text-center"><i class="fa fa-key bigicon"></i></span>
+                        <div class="col-md-8">
+
+                            <input id="Folio" name="Folio" type="text" placeholder="Folio" readonly="readonly" value="@completo" class="form-control">
+
+                        </div>
+                    </div>
+
+                    @*Libro*@
+                    <div class="form-group">
+                        <span class="col-md-1 col-md-offset-2 text-center"><i title="Libro" class="fa fa-book bigicon hidden"></i></span>
+                        <div class="col-md-8">
+                            <input id="Libro" name="Libro" type="text" required placeholder="Numero de Libro" value="1" class="form-control hidden">
+                        </div>
+                    </div>
+                    @*Foja*@
+                    <div class="form-group">
+                        <span class="col-md-1 col-md-offset-2 text-center"><i title="Libro" class="fa fa-book bigicon hidden"></i></span>
+                        <div class="col-md-8">
+                            <input id="Foja" name="Foja" type="text" required placeholder="Numero de Foja" value="1" class="form-control hidden">
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <span title="Seleccione a quien" class="col-md-1 col-md-offset-2 text-center"><i class="fa fa-user bigicon"></i></span>
+                        <div class="col-md-8">
+                            @*<input id="lname" name="name" type="text" placeholder="Last Name" class="form-control">*@
+                            <select required name="IdQuien" class="form-control" id="IdQuien">
+                                <option value="">[---Seleccione una opción--]</option>
+                                <option value="1">a</option>
+                                <option value="2">al</option>
+                                <option value="3">a la</option>
+                                <option value="4">a los</option>
+                                <option value="4">a las</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <span title="Nombre completo" class="col-md-1 col-md-offset-2 text-center"><i class="fa fa-user bigicon"></i></span>
+                        <div class="col-md-8">
+                            <input required id="fname" name="Nombre" type="text" placeholder="ING JOSÉ PÉREZ JUÁREZ" class="form-control">
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <span title="Seleccione un tipo de documento" class="col-md-1 col-md-offset-2 text-center"><i class="fa fa-file bigicon"></i></span>
+                        <div class="col-md-8">
+                            @*<input id="lname" name="name" type="text" placeholder="Last Name" class="form-control">*@
+                            <select required name="IdTipoDocumento" class="form-control" id="IdTipoDocumento">
+                                <option value="">[---Seleccione una opción--]</option>
+                                <option value="1">Diploma</option>
+                                <option value="2">Reconocimiento</option>
+                                <option value="3">Constancia</option>
+                                <option value="4">Estimulo</option>
+                            </select>
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <span title="Motivo" class="col-md-1 col-md-offset-2 text-center"><i class="fa fa-pencil-square-o bigicon"></i></span>
+                        <div class="col-md-8">
+                            <textarea class="form-control" required id="Motivo" name="Motivo" placeholder="Ingrese el motivo de la solicitud ej: Por su compromiso Institucional y su valiosa colaboración como Instructor del  Taller Ética en el Servicio Público" rows="7"></textarea>
+                        </div>
+                    </div>
+
+
+
+                    <div class="form-group">
+                        <span title="Fecha del evento realizado" class="col-md-1 col-md-offset-2 text-center"><i class="fa fa-calendar bigicon"></i></span>
+                        <div class="col-md-8">
+                            <input id="FechaEvento" required name="FechaEvento" type="date"  placeholder="Fecha del evento" class="form-control">
+                        </div>
+                    </div>
+                    
+
+
+                    <div class="form-group hidden">
+
+                        <span title="Fecha de solicitud" class="col-md-1 col-md-offset-2 text-center"><i class="fa fa-calendar bigicon"></i></span>
+                        <div class="col-md-8">
+                            <input id="FechaRegistro" name="FechaRegistro" type="text" placeholder="Fecha del evento" value="@DateTime.Today" class="form-control">
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <span title="Seleccione quién firma el documento" class="col-md-1 col-md-offset-2 text-center"><i class="fa fa-file bigicon"></i></span>
+                        <div class="col-md-8">
+                            @*<input id="lname" name="name" type="text" placeholder="Last Name" class="form-control">*@
+                            <select required name="IdFirma" class="form-control" id="IdFirma">
+                                <option value="">[---Seleccione una opción--]</option>
+                                <option value="1">DR. PABLO BEDOLLA LÓPEZ</option>
+                                @*<option value="2">FANNY NELIA TERRÓN BOTELLO</option>
+                                <option value="2">MTRO. JULIO MEJÍA GÓMEZ</option>*@
+                                
+                                @*<option value="2">al</option>
+        <option value="3">a la</option>
+        <option value="4">a los</option>*@
+                            </select>
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <div class="col-md-12 text-center">
+                            <br />
+                            <button type="submit" class="btn btn-success btn-large">Enviar solicitud</button>
+                        </div>
+                    </div>
+                </fieldset>
+
+
+
+            }
+
+            <form class="form-horizontal" method="post"></form>
+        </div>
+    </div>
+</div>
+
+<div>
+    @Html.ActionLink("Regresar", "Index", new { }, new { @class = "btn btn-warning btn-larg" })
+</div>

@@ -1,0 +1,209 @@
+﻿@model SolicitudReconocimientos.Models.Reconocimientos
+
+@{
+    /**/
+
+
+    ViewBag.Title = "Atender";
+
+    Layout = "~/Views/Shared/_Masteradmin.cshtml";
+    IEnumerable<SolicitudReconocimientos.Models.Reconocimientos> t = ViewBag.total;
+    IEnumerable<SolicitudReconocimientos.Models.Reconocimientos> solicitudes = ViewBag.lista;
+}
+
+@if (FrontUser.TienePermiso(RolesPermisos.vista_administrador))
+{
+
+    <div class="row">
+        <div class="col-md-12">
+            <div class="well">
+
+                @using (Html.BeginForm("Edit", "Reconocimientos", FormMethod.Post))
+                {
+                    @Html.AntiForgeryToken()
+                    <hr />
+                    //Identificador,IdUsuario,Nombre,IdTipoDocumento,Motivo,FechaEvento,FechaRegistro,Autorizado,Archivo,AcuseEntrega, Comentario"
+
+                    <fieldset>
+                        <legend class="text-center header">Autorizar</legend>
+                        <div class="form-group hidden">
+                            <span class="col-md-1 col-md-offset-2 text-center"><i class="fa fa-user bigicon"></i></span>
+                            <div class="col-md-8">
+                                <input id="Identificador" name="Identificador" type="text" placeholder="id usuario" value="@Model.Identificador" class="form-control">
+                            </div>
+                        </div>
+                        <div class="form-group hidden">
+                            <span class="col-md-1 col-md-offset-2 text-center"><i class="fa fa-user bigicon"></i></span>
+                            <div class="col-md-8">
+                                <input id="IdUsuario" name="IdUsuario" type="text" placeholder="id usuario" value="@Model.IdUsuario" class="form-control">
+                            </div>
+                        </div>
+                        @*Folio*@
+                        <div class="form-group">
+                            <span class="col-md-1 col-md-offset-2 text-center"><i class="fa fa-key bigicon"></i></span>
+                            <div class="col-md-8">
+                                <input id="Folio" name="Folio" type="text" readonly="readonly" placeholder="Folio" value="@Model.Folio" class="form-control">
+                            </div>
+                        </div>
+
+                        @*Libro*@
+                        <div class="form-group">
+                            <span class="col-md-1 col-md-offset-2 text-center"><i title="Libro" class="fa fa-book bigicon"></i></span>
+                            <div class="col-md-8">
+                                <input id="Libro" name="Libro" type="text" readonly="readonly" placeholder="Numero de Libro" value="@Model.Libro" class="form-control">
+                            </div>
+                        </div>
+                        @*Foja*@
+                        <div class="form-group">
+                            <span class="col-md-1 col-md-offset-2 text-center"><i title="Libro" class="fa fa-book bigicon"></i></span>
+                            <div class="col-md-8">
+                                <input id="Foja" name="Foja" type="text" readonly="readonly" placeholder="Numero de Foja" value="@Model.Foja" class="form-control">
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <span title="Seleccione un tipo de documento" class="col-md-1 col-md-offset-2 text-center"><i class="fa fa-file bigicon"></i></span>
+                            <div class="col-md-8">
+
+                                <select readonly="readonly" id="IdQuien" name="IdQuien" class="form-control">
+                                    <option value="@Model.Quien.IdQuien">@Model.Quien.Nombre</option>
+                                </select>
+
+
+
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <span title="Nombre completo" class="col-md-1 col-md-offset-2 text-center"><i class="fa fa-user bigicon"></i></span>
+                            <div class="col-md-8">
+                                <input required id="Nombre" name="Nombre" contenteditable="false" readonly="readonly" type="text" value="@Model.Nombre" placeholder="Nombre completo" class="form-control">
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <span title="Seleccione un tipo de documento" class="col-md-1 col-md-offset-2 text-center"><i class="fa fa-file bigicon"></i></span>
+                            <div class="col-md-8">
+
+                                <select readonly="readonly" id="IdTipoDocumento" name="IdTipoDocumento" class="form-control">
+                                    <option value="@Model.TipoDocumento.Identificador">@Model.TipoDocumento.Nombre</option>
+                                </select>
+
+
+
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <span title="Motivo" class="col-md-1 col-md-offset-2 text-center"><i class="fa fa-pencil-square-o bigicon"></i></span>
+                            <div class="col-md-8">
+                                <textarea class="form-control"  id="Motivo" name="Motivo" placeholder="Ingrese el motivo de la solicitud" value="@Model.Motivo" rows="7">@Model.Motivo</textarea>
+                            </div>
+                        </div>
+
+
+
+                        <div class="form-group">
+                            <span title="Fecha del evento realizado" class="col-md-1 col-md-offset-2 text-center"><i class="fa fa-calendar bigicon"></i></span>
+                            <div class="col-md-8">
+
+                                <input id="FechaEvento" name="FechaEvento" readonly="readonly" value="@Model.FechaEvento" type="text" placeholder="Fecha del evento" class="form-control">
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <span title="Fecha de solicitud" class="col-md-1 col-md-offset-2 text-center"><i class="fa fa-calendar bigicon"></i></span>
+                            <div class="col-md-8">
+                                <input id="FechaRegistro" name="FechaRegistro" readonly="readonly" type="text" placeholder="Fecha del evento" value="@Model.FechaRegistro" class="form-control">
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <span title="Estuatus" class="col-md-1 col-md-offset-2 text-center"><i class="fa fa-info-circle fa-2x"></i></span>
+                            <div class="col-md-8">
+
+                                @if (Model.Autorizado == "Pendiente")
+                                { 
+                                    <select class="form-control" name="Autorizado">
+                                        <option value="@Model.Autorizado">@Model.Autorizado</option>
+                                        <option value="Autorizado">Autorizado</option>
+
+                                    </select>
+
+
+                                }
+                                else
+                                {
+                                    if (Model.Autorizado == "Autorizado")
+                                    {
+                                        <select class="form-control" name="Autorizado">
+                                            <option value="@Model.Autorizado">@Model.Autorizado</option>
+                                            <option value="Pendiente">Pendiente</option>
+
+                                        </select>
+
+
+                                    }
+                                }
+
+
+                            </div>
+                        </div>
+
+                        <div class="form-group hidden" disabled="disabled">
+                            <span title="Reconocimiento Digital" class="col-md-1 col-md-offset-2 text-center"><i class="fa fa-file-pdf bigicon"></i></span>
+                            <div class="col-md-8">
+                                <input id="Archivo" name="Archivo" type="text" placeholder="Fecha del evento" value="@Model.Archivo" class="form-control">
+                            </div>
+                        </div>
+                        <div class="form-group hidden" disabled="disabled">
+                            <span title="Reconocimiento Digital" class="col-md-1 col-md-offset-2 text-center"><i class="fa fa-file-pdf bigicon"></i></span>
+                            <div class="col-md-8">
+                                <input id="AcuseEntrega" name="AcuseEntrega" type="text" placeholder="Fecha del evento" value="@Model.AcuseEntrega" class="form-control">
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <span title="Observaciones" class="col-md-1 col-md-offset-2 text-center"><i class="fa fa-pencil-square-o bigicon"></i></span>
+                            <div class="col-md-8">
+                                <textarea class="form-control" id="Comentario" name="Comentario" placeholder="Observaciones de la solicitud" value="@Model.Comentario" rows="7">@Model.Comentario</textarea>
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <span title="Seleccione un tipo de documento" class="col-md-1 col-md-offset-2 text-center"><i class="fa fa-file bigicon"></i></span>
+                            <div class="col-md-8">
+
+                                <select readonly="readonly" id="IdFirma" name="IdFirma" class="form-control">
+                                    <option value="@Model.Firma.IdFirma">@Model.Firma.Nombre</option>
+                                </select>
+
+                            </div>
+                        </div>
+                        <div class="form-group">
+
+                            <div class="col-md-12 text-center">
+                                <br />
+                                <button type="submit" class="btn btn-success btn-large">Guardar</button>
+                            </div>
+                        </div>
+                    </fieldset>
+
+
+
+                }
+
+                <form class="form-horizontal" method="post"></form>
+            </div>
+        </div>
+    </div>
+
+}
+else
+{
+    <h1>No hay nada para mostrar</h1>
+}
+
+
+
+
+<div>
+    @Html.ActionLink("Regresar", "Index", new { }, new { @class = "btn btn-warning btn-large" })
+</div>
+

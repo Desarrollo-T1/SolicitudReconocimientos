@@ -1,0 +1,468 @@
+<?xml version="1.0" encoding="utf-8"?>
+<definitions xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:tns="http://service.ceroPapel.dgsei.edomex.gob.mx/" name="CeroPapelWs_Service" targetNamespace="http://service.ceroPapel.dgsei.edomex.gob.mx/" xmlns="http://schemas.xmlsoap.org/wsdl/">
+  <types>
+    <xsd:schema>
+      <xsd:import schemaLocation="http://qasistemas2.edomex.gob.mx:80/ceroPapel/webService?xsd=1" namespace="http://service.ceroPapel.dgsei.edomex.gob.mx/" />
+    </xsd:schema>
+    <xsd:schema>
+      <xsd:import schemaLocation="http://qasistemas2.edomex.gob.mx:80/ceroPapel/webService?xsd=2" namespace="http://jaxb.dev.java.net/array" />
+    </xsd:schema>
+  </types>
+  <message name="firmarSolicitud">
+    <part name="parameters" element="tns:firmarSolicitud" />
+  </message>
+  <message name="firmarSolicitudResponse">
+    <part name="parameters" element="tns:firmarSolicitudResponse" />
+  </message>
+  <message name="WSException">
+    <part name="fault" element="tns:WSException" />
+  </message>
+  <message name="reasignarSolicitud">
+    <part name="parameters" element="tns:reasignarSolicitud" />
+  </message>
+  <message name="reasignarSolicitudResponse">
+    <part name="parameters" element="tns:reasignarSolicitudResponse" />
+  </message>
+  <message name="obtenerDocumentoFirmado">
+    <part name="parameters" element="tns:obtenerDocumentoFirmado" />
+  </message>
+  <message name="obtenerDocumentoFirmadoResponse">
+    <part name="parameters" element="tns:obtenerDocumentoFirmadoResponse" />
+  </message>
+  <message name="nuevaSolicitud">
+    <part name="parameters" element="tns:nuevaSolicitud" />
+  </message>
+  <message name="nuevaSolicitudResponse">
+    <part name="parameters" element="tns:nuevaSolicitudResponse" />
+  </message>
+  <message name="obtenerEvidenciaImprimible">
+    <part name="parameters" element="tns:obtenerEvidenciaImprimible" />
+  </message>
+  <message name="obtenerEvidenciaImprimibleResponse">
+    <part name="parameters" element="tns:obtenerEvidenciaImprimibleResponse" />
+  </message>
+  <message name="existeSolicitudTerminada">
+    <part name="parameters" element="tns:existeSolicitudTerminada" />
+  </message>
+  <message name="existeSolicitudTerminadaResponse">
+    <part name="parameters" element="tns:existeSolicitudTerminadaResponse" />
+  </message>
+  <message name="obtenerEvidenciaXml">
+    <part name="parameters" element="tns:obtenerEvidenciaXml" />
+  </message>
+  <message name="obtenerEvidenciaXmlResponse">
+    <part name="parameters" element="tns:obtenerEvidenciaXmlResponse" />
+  </message>
+  <message name="nuevaSolicitudBatch">
+    <part name="parameters" element="tns:nuevaSolicitudBatch" />
+  </message>
+  <message name="nuevaSolicitudBatchResponse">
+    <part name="parameters" element="tns:nuevaSolicitudBatchResponse" />
+  </message>
+  <message name="nuevaSolicitudBatchSHA2">
+    <part name="parameters" element="tns:nuevaSolicitudBatchSHA2" />
+  </message>
+  <message name="nuevaSolicitudBatchSHA2Response">
+    <part name="parameters" element="tns:nuevaSolicitudBatchSHA2Response" />
+  </message>
+  <message name="UnsupportedEncodingException">
+    <part name="fault" element="tns:UnsupportedEncodingException" />
+  </message>
+  <message name="obtenerEvidenciaXmlSHA2">
+    <part name="parameters" element="tns:obtenerEvidenciaXmlSHA2" />
+  </message>
+  <message name="obtenerEvidenciaXmlSHA2Response">
+    <part name="parameters" element="tns:obtenerEvidenciaXmlSHA2Response" />
+  </message>
+  <message name="reenviarSolicitud">
+    <part name="parameters" element="tns:reenviarSolicitud" />
+  </message>
+  <message name="reenviarSolicitudResponse">
+    <part name="parameters" element="tns:reenviarSolicitudResponse" />
+  </message>
+  <message name="cancelaSolicitud">
+    <part name="parameters" element="tns:cancelaSolicitud" />
+  </message>
+  <message name="cancelaSolicitudResponse">
+    <part name="parameters" element="tns:cancelaSolicitudResponse" />
+  </message>
+  <message name="identificadorSolicitud">
+    <part name="parameters" element="tns:identificadorSolicitud" />
+  </message>
+  <message name="identificadorSolicitudResponse">
+    <part name="parameters" element="tns:identificadorSolicitudResponse" />
+  </message>
+  <message name="solicitudValidadorIdentificador">
+    <part name="parameters" element="tns:solicitudValidadorIdentificador" />
+  </message>
+  <message name="solicitudValidadorIdentificadorResponse">
+    <part name="parameters" element="tns:solicitudValidadorIdentificadorResponse" />
+  </message>
+  <message name="solicitudValidador">
+    <part name="parameters" element="tns:solicitudValidador" />
+  </message>
+  <message name="solicitudValidadorResponse">
+    <part name="parameters" element="tns:solicitudValidadorResponse" />
+  </message>
+  <message name="solicitudValidadorSistema">
+    <part name="parameters" element="tns:solicitudValidadorSistema" />
+  </message>
+  <message name="solicitudValidadorSistemaResponse">
+    <part name="parameters" element="tns:solicitudValidadorSistemaResponse" />
+  </message>
+  <message name="obtenerDocumentoOriginal">
+    <part name="parameters" element="tns:obtenerDocumentoOriginal" />
+  </message>
+  <message name="obtenerDocumentoOriginalResponse">
+    <part name="parameters" element="tns:obtenerDocumentoOriginalResponse" />
+  </message>
+  <message name="obtenerDocumentoFirmadoIdentificador">
+    <part name="parameters" element="tns:obtenerDocumentoFirmadoIdentificador" />
+  </message>
+  <message name="obtenerDocumentoFirmadoIdentificadorResponse">
+    <part name="parameters" element="tns:obtenerDocumentoFirmadoIdentificadorResponse" />
+  </message>
+  <message name="identificadorSolicitudHashDocumentoFirmado">
+    <part name="parameters" element="tns:identificadorSolicitudHashDocumentoFirmado" />
+  </message>
+  <message name="identificadorSolicitudHashDocumentoFirmadoResponse">
+    <part name="parameters" element="tns:identificadorSolicitudHashDocumentoFirmadoResponse" />
+  </message>
+  <portType name="CeroPapelWs">
+    <operation name="firmarSolicitud">
+      <input message="tns:firmarSolicitud" />
+      <output message="tns:firmarSolicitudResponse" />
+      <fault name="WSException" message="tns:WSException" />
+    </operation>
+    <operation name="reasignarSolicitud">
+      <input message="tns:reasignarSolicitud" />
+      <output message="tns:reasignarSolicitudResponse" />
+      <fault name="WSException" message="tns:WSException" />
+    </operation>
+    <operation name="obtenerDocumentoFirmado">
+      <input message="tns:obtenerDocumentoFirmado" />
+      <output message="tns:obtenerDocumentoFirmadoResponse" />
+      <fault name="WSException" message="tns:WSException" />
+    </operation>
+    <operation name="nuevaSolicitud">
+      <input message="tns:nuevaSolicitud" />
+      <output message="tns:nuevaSolicitudResponse" />
+      <fault name="WSException" message="tns:WSException" />
+    </operation>
+    <operation name="obtenerEvidenciaImprimible">
+      <input message="tns:obtenerEvidenciaImprimible" />
+      <output message="tns:obtenerEvidenciaImprimibleResponse" />
+      <fault name="WSException" message="tns:WSException" />
+    </operation>
+    <operation name="existeSolicitudTerminada">
+      <input message="tns:existeSolicitudTerminada" />
+      <output message="tns:existeSolicitudTerminadaResponse" />
+      <fault name="WSException" message="tns:WSException" />
+    </operation>
+    <operation name="obtenerEvidenciaXml">
+      <input message="tns:obtenerEvidenciaXml" />
+      <output message="tns:obtenerEvidenciaXmlResponse" />
+      <fault name="WSException" message="tns:WSException" />
+    </operation>
+    <operation name="nuevaSolicitudBatch">
+      <input message="tns:nuevaSolicitudBatch" />
+      <output message="tns:nuevaSolicitudBatchResponse" />
+      <fault name="WSException" message="tns:WSException" />
+    </operation>
+    <operation name="nuevaSolicitudBatchSHA2">
+      <input message="tns:nuevaSolicitudBatchSHA2" />
+      <output message="tns:nuevaSolicitudBatchSHA2Response" />
+      <fault name="WSException" message="tns:WSException" />
+      <fault name="UnsupportedEncodingException" message="tns:UnsupportedEncodingException" />
+    </operation>
+    <operation name="obtenerEvidenciaXmlSHA2">
+      <input message="tns:obtenerEvidenciaXmlSHA2" />
+      <output message="tns:obtenerEvidenciaXmlSHA2Response" />
+      <fault name="WSException" message="tns:WSException" />
+    </operation>
+    <operation name="reenviarSolicitud">
+      <input message="tns:reenviarSolicitud" />
+      <output message="tns:reenviarSolicitudResponse" />
+      <fault name="WSException" message="tns:WSException" />
+    </operation>
+    <operation name="cancelaSolicitud">
+      <input message="tns:cancelaSolicitud" />
+      <output message="tns:cancelaSolicitudResponse" />
+      <fault name="WSException" message="tns:WSException" />
+    </operation>
+    <operation name="identificadorSolicitud">
+      <input message="tns:identificadorSolicitud" />
+      <output message="tns:identificadorSolicitudResponse" />
+      <fault name="WSException" message="tns:WSException" />
+    </operation>
+    <operation name="solicitudValidadorIdentificador">
+      <input message="tns:solicitudValidadorIdentificador" />
+      <output message="tns:solicitudValidadorIdentificadorResponse" />
+      <fault name="WSException" message="tns:WSException" />
+    </operation>
+    <operation name="solicitudValidador">
+      <input message="tns:solicitudValidador" />
+      <output message="tns:solicitudValidadorResponse" />
+      <fault name="WSException" message="tns:WSException" />
+    </operation>
+    <operation name="solicitudValidadorSistema">
+      <input message="tns:solicitudValidadorSistema" />
+      <output message="tns:solicitudValidadorSistemaResponse" />
+      <fault name="WSException" message="tns:WSException" />
+    </operation>
+    <operation name="obtenerDocumentoOriginal">
+      <input message="tns:obtenerDocumentoOriginal" />
+      <output message="tns:obtenerDocumentoOriginalResponse" />
+      <fault name="WSException" message="tns:WSException" />
+    </operation>
+    <operation name="obtenerDocumentoFirmadoIdentificador">
+      <input message="tns:obtenerDocumentoFirmadoIdentificador" />
+      <output message="tns:obtenerDocumentoFirmadoIdentificadorResponse" />
+      <fault name="WSException" message="tns:WSException" />
+    </operation>
+    <operation name="identificadorSolicitudHashDocumentoFirmado">
+      <input message="tns:identificadorSolicitudHashDocumentoFirmado" />
+      <output message="tns:identificadorSolicitudHashDocumentoFirmadoResponse" />
+      <fault name="WSException" message="tns:WSException" />
+    </operation>
+  </portType>
+  <binding name="CeroPapelWsPortBinding" type="tns:CeroPapelWs">
+    <soap:binding transport="http://schemas.xmlsoap.org/soap/http" />
+    <operation name="firmarSolicitud">
+      <soap:operation soapAction="" />
+      <input>
+        <soap:body use="literal" />
+      </input>
+      <output>
+        <soap:body use="literal" />
+      </output>
+      <fault name="WSException">
+        <soap:fault use="literal" name="WSException" namespace="" />
+      </fault>
+    </operation>
+    <operation name="reasignarSolicitud">
+      <soap:operation soapAction="" />
+      <input>
+        <soap:body use="literal" />
+      </input>
+      <output>
+        <soap:body use="literal" />
+      </output>
+      <fault name="WSException">
+        <soap:fault use="literal" name="WSException" namespace="" />
+      </fault>
+    </operation>
+    <operation name="obtenerDocumentoFirmado">
+      <soap:operation soapAction="" />
+      <input>
+        <soap:body use="literal" />
+      </input>
+      <output>
+        <soap:body use="literal" />
+      </output>
+      <fault name="WSException">
+        <soap:fault use="literal" name="WSException" namespace="" />
+      </fault>
+    </operation>
+    <operation name="nuevaSolicitud">
+      <soap:operation soapAction="" />
+      <input>
+        <soap:body use="literal" />
+      </input>
+      <output>
+        <soap:body use="literal" />
+      </output>
+      <fault name="WSException">
+        <soap:fault use="literal" name="WSException" namespace="" />
+      </fault>
+    </operation>
+    <operation name="obtenerEvidenciaImprimible">
+      <soap:operation soapAction="" />
+      <input>
+        <soap:body use="literal" />
+      </input>
+      <output>
+        <soap:body use="literal" />
+      </output>
+      <fault name="WSException">
+        <soap:fault use="literal" name="WSException" namespace="" />
+      </fault>
+    </operation>
+    <operation name="existeSolicitudTerminada">
+      <soap:operation soapAction="" />
+      <input>
+        <soap:body use="literal" />
+      </input>
+      <output>
+        <soap:body use="literal" />
+      </output>
+      <fault name="WSException">
+        <soap:fault use="literal" name="WSException" namespace="" />
+      </fault>
+    </operation>
+    <operation name="obtenerEvidenciaXml">
+      <soap:operation soapAction="" />
+      <input>
+        <soap:body use="literal" />
+      </input>
+      <output>
+        <soap:body use="literal" />
+      </output>
+      <fault name="WSException">
+        <soap:fault use="literal" name="WSException" namespace="" />
+      </fault>
+    </operation>
+    <operation name="nuevaSolicitudBatch">
+      <soap:operation soapAction="" />
+      <input>
+        <soap:body use="literal" />
+      </input>
+      <output>
+        <soap:body use="literal" />
+      </output>
+      <fault name="WSException">
+        <soap:fault use="literal" name="WSException" namespace="" />
+      </fault>
+    </operation>
+    <operation name="nuevaSolicitudBatchSHA2">
+      <soap:operation soapAction="" />
+      <input>
+        <soap:body use="literal" />
+      </input>
+      <output>
+        <soap:body use="literal" />
+      </output>
+      <fault name="WSException">
+        <soap:fault use="literal" name="WSException" namespace="" />
+      </fault>
+      <fault name="UnsupportedEncodingException">
+        <soap:fault use="literal" name="UnsupportedEncodingException" namespace="" />
+      </fault>
+    </operation>
+    <operation name="obtenerEvidenciaXmlSHA2">
+      <soap:operation soapAction="" />
+      <input>
+        <soap:body use="literal" />
+      </input>
+      <output>
+        <soap:body use="literal" />
+      </output>
+      <fault name="WSException">
+        <soap:fault use="literal" name="WSException" namespace="" />
+      </fault>
+    </operation>
+    <operation name="reenviarSolicitud">
+      <soap:operation soapAction="" />
+      <input>
+        <soap:body use="literal" />
+      </input>
+      <output>
+        <soap:body use="literal" />
+      </output>
+      <fault name="WSException">
+        <soap:fault use="literal" name="WSException" namespace="" />
+      </fault>
+    </operation>
+    <operation name="cancelaSolicitud">
+      <soap:operation soapAction="" />
+      <input>
+        <soap:body use="literal" />
+      </input>
+      <output>
+        <soap:body use="literal" />
+      </output>
+      <fault name="WSException">
+        <soap:fault use="literal" name="WSException" namespace="" />
+      </fault>
+    </operation>
+    <operation name="identificadorSolicitud">
+      <soap:operation soapAction="" />
+      <input>
+        <soap:body use="literal" />
+      </input>
+      <output>
+        <soap:body use="literal" />
+      </output>
+      <fault name="WSException">
+        <soap:fault use="literal" name="WSException" namespace="" />
+      </fault>
+    </operation>
+    <operation name="solicitudValidadorIdentificador">
+      <soap:operation soapAction="" />
+      <input>
+        <soap:body use="literal" />
+      </input>
+      <output>
+        <soap:body use="literal" />
+      </output>
+      <fault name="WSException">
+        <soap:fault use="literal" name="WSException" namespace="" />
+      </fault>
+    </operation>
+    <operation name="solicitudValidador">
+      <soap:operation soapAction="" />
+      <input>
+        <soap:body use="literal" />
+      </input>
+      <output>
+        <soap:body use="literal" />
+      </output>
+      <fault name="WSException">
+        <soap:fault use="literal" name="WSException" namespace="" />
+      </fault>
+    </operation>
+    <operation name="solicitudValidadorSistema">
+      <soap:operation soapAction="" />
+      <input>
+        <soap:body use="literal" />
+      </input>
+      <output>
+        <soap:body use="literal" />
+      </output>
+      <fault name="WSException">
+        <soap:fault use="literal" name="WSException" namespace="" />
+      </fault>
+    </operation>
+    <operation name="obtenerDocumentoOriginal">
+      <soap:operation soapAction="" />
+      <input>
+        <soap:body use="literal" />
+      </input>
+      <output>
+        <soap:body use="literal" />
+      </output>
+      <fault name="WSException">
+        <soap:fault use="literal" name="WSException" namespace="" />
+      </fault>
+    </operation>
+    <operation name="obtenerDocumentoFirmadoIdentificador">
+      <soap:operation soapAction="" />
+      <input>
+        <soap:body use="literal" />
+      </input>
+      <output>
+        <soap:body use="literal" />
+      </output>
+      <fault name="WSException">
+        <soap:fault use="literal" name="WSException" namespace="" />
+      </fault>
+    </operation>
+    <operation name="identificadorSolicitudHashDocumentoFirmado">
+      <soap:operation soapAction="" />
+      <input>
+        <soap:body use="literal" />
+      </input>
+      <output>
+        <soap:body use="literal" />
+      </output>
+      <fault name="WSException">
+        <soap:fault use="literal" name="WSException" namespace="" />
+      </fault>
+    </operation>
+  </binding>
+  <service name="CeroPapelWs_Service">
+    <port name="CeroPapelWsPort" binding="tns:CeroPapelWsPortBinding">
+      <soap:address location="http://qasistemas2.edomex.gob.mx:80/ceroPapel/webService" />
+    </port>
+  </service>
+</definitions>

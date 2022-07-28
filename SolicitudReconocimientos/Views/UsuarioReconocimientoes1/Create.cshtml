@@ -1,0 +1,96 @@
+﻿@model SolicitudReconocimientos.Models.UsuarioReconocimiento
+
+@{
+
+    ViewBag.Title = "Create";
+    Layout = "~/Views/Shared/_Masteradmin.cshtml";
+}
+<hr />
+
+<div class="row">
+    <div class="col-md-12">
+        <div class="well">
+
+            @using (Html.BeginForm("Create", "Reconocimientos", FormMethod.Post))
+            {
+                @Html.AntiForgeryToken()
+                <hr />
+                //Identificador,IdUsuario,Nombre,IdTipoDocumento,Motivo,FechaEvento,FechaRegistro,Autorizado,Archivo,AcuseEntrega"
+
+                <fieldset>
+                    <legend class="text-center header">Nueva Solicitud</legend>
+                    <div class="form-group hidden">
+                        <span class="col-md-1 col-md-offset-2 text-center"><i class="fa fa-user bigicon"></i></span>
+                        <div class="col-md-8">
+                            <input id="Identificador" name="Identificador" type="text" placeholder="id usuario" value="1" class="form-control">
+                        </div>
+                    </div>
+                    <div class="form-group hidden">
+                        <span class="col-md-1 col-md-offset-2 text-center"><i class="fa fa-user bigicon"></i></span>
+                        <div class="col-md-8">
+                            <input id="IdUsuario" name="IdUsuario" type="text" placeholder="id usuario" value="@SessionHelper.GetUser()" class="form-control">
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <span title="Nombre completo" class="col-md-1 col-md-offset-2 text-center"><i class="fa fa-user bigicon"></i></span>
+                        <div class="col-md-8">
+                            <input required id="fname" name="Nombre" type="text" placeholder="Nombre completo" class="form-control">
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <span title="Seleccione un tipo de documento" class="col-md-1 col-md-offset-2 text-center"><i class="fa fa-file bigicon"></i></span>
+                        <div class="col-md-8">
+                            @*<input id="lname" name="name" type="text" placeholder="Last Name" class="form-control">*@
+                            <select required name="IdTipoDocumento" class="form-control" id="IdTipoDocumento">
+                                <option value="">[---Seleccione una opción--]</option>
+                                <option value="1">Reconocimiento</option>
+                                <option value="2">Diploma</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <span title="Motivo" class="col-md-1 col-md-offset-2 text-center"><i class="fa fa-pencil-square-o bigicon"></i></span>
+                        <div class="col-md-8">
+                            <textarea class="form-control" id="Motivo" name="Motivo" placeholder="Ingrese el motivo de la solicitud" rows="7"></textarea>
+                        </div>
+                    </div>
+
+
+
+                    <div class="form-group">
+                        <span title="Fecha del evento realizado" class="col-md-1 col-md-offset-2 text-center"><i class="fa fa-calendar bigicon"></i></span>
+                        <div class="col-md-8">
+                            <input id="FechaEvento" name="FechaEvento" type="date" placeholder="Fecha del evento" class="form-control">
+                        </div>
+                    </div>
+                    <div class="form-group hidden">
+                        <span title="Fecha de solicitud" class="col-md-1 col-md-offset-2 text-center"><i class="fa fa-calendar bigicon"></i></span>
+                        <div class="col-md-8">
+                            <input id="FechaRegistro" name="FechaRegistro" type="text" placeholder="Fecha del evento" value="@DateTime.Today" class="form-control">
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <div class="col-md-12 text-center">
+                            <button type="submit" class="btn btn-primary btn-lg">Solicitar</button>
+                        </div>
+                    </div>
+                </fieldset>
+
+
+
+            }
+
+            <form class="form-horizontal" method="post"></form>
+        </div>
+    </div>
+</div>
+
+
+
+
+
+<div>
+    @Html.ActionLink("Back to List", "Index")
+</div>

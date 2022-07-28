@@ -1,0 +1,34 @@
+﻿@model SolicitudReconocimientos.Models.UsuarioReconocimiento
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>UsuarioReconocimiento</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.Reconocimientos.Nombre)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Reconocimientos.Nombre)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Usuario.NombreTipo)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Usuario.NombreTipo)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.Indentificador }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>

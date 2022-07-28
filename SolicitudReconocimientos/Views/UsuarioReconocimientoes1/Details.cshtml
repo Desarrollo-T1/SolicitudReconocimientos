@@ -1,0 +1,95 @@
+﻿@model SolicitudReconocimientos.Models.Reconocimientos
+
+@{
+
+    ViewBag.Title = "Create";
+
+    Layout = "~/Views/Shared/_Masteradmin.cshtml";
+    IEnumerable<SolicitudReconocimientos.Models.Reconocimientos> t = ViewBag.total;
+    IEnumerable<SolicitudReconocimientos.Models.Reconocimientos> solicitudes = ViewBag.lista;
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>Reconocimientos</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.TipoDocumento.Nombre)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.TipoDocumento.Nombre)
+        </dd>
+
+        <dt>
+            @Model.Nombre
+        </dt>
+
+        <dd>
+            @Model.Nombre
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Nombre)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Nombre)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Motivo)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Motivo)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.FechaEvento)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.FechaEvento)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.FechaRegistro)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.FechaRegistro)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Autorizado)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Autorizado)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Archivo)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Archivo)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.AcuseEntrega)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.AcuseEntrega)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.Identificador }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>

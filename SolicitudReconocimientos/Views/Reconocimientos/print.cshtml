@@ -1,0 +1,122 @@
+﻿@model SolicitudReconocimientos.Models.Reconocimientos
+
+@{
+    ViewBag.Title = "print";
+}
+
+<h2>print</h2>
+
+<div>
+    <h4>Reconocimientos</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.TipoDocumento.Nombre)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.TipoDocumento.Nombre)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.IdUsuario)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.IdUsuario)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Nombre)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Nombre)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Motivo)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Motivo)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.FechaEvento)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.FechaEvento)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.FechaRegistro)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.FechaRegistro)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Autorizado)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Autorizado)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Archivo)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Archivo)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.AcuseEntrega)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.AcuseEntrega)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Folio)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Folio)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Foja)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Foja)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Libro)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Libro)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Comentario)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Comentario)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.Identificador }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>

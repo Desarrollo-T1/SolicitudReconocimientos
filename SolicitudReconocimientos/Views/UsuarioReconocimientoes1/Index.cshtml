@@ -1,0 +1,345 @@
+﻿@model IEnumerable<SolicitudReconocimientos.Models.UsuarioReconocimiento>
+
+@{
+
+    ViewBag.Title = "Index";
+
+    Layout = "~/Views/Shared/_Masteradmin.cshtml";
+    IEnumerable<SolicitudReconocimientos.Models.Reconocimientos> t = ViewBag.total;
+    IEnumerable<SolicitudReconocimientos.Models.Reconocimientos> solicitudes = ViewBag.lista;
+}
+
+@*<h2>Index</h2>*@
+
+
+
+
+
+@if (FrontUser.TienePermiso(RolesPermisos.vista_usuario))
+{
+    if (t.Count() <= 0)
+    {
+
+        <h1>Aún no se ha solicitado ningun reconocimiento </h1>
+        <h4> <a href="~/Reconocimientos/Create/">Solicitar uno nuevo</a></h4>
+
+    }
+    else
+    {
+
+        <h2>Tus solicitudes</h2>
+        <p>
+            @Html.ActionLink("Solicitar uno nuevo", "Create", new { }, new { @class = "btn btn-primary" })
+        </p>
+        <table class="table table-striped">
+            <tr>
+                <th>
+                    @Html.DisplayNameFor(model => model.Usuario.Nombre)
+                </th>
+                @*<th>
+                        @Html.DisplayNameFor(model => model.Usuario.NombreTipo)
+                    </th>*@
+                <th>
+                    @Html.DisplayNameFor(model => model.Usuario.Nombre)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.Reconocimientos.Motivo)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.Reconocimientos.FechaEvento)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.Reconocimientos.FechaRegistro)
+                    
+                </th>
+                <th>
+                    Estatus
+                </th>
+                @*<th>
+                        @Html.DisplayNameFor(model => model.Archivo)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.AcuseEntrega)
+                    </th>*@
+                <th></th>
+            </tr>
+
+            @foreach (var item in solicitudes)
+            {
+
+
+                <tr>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Nombre)
+                    </td>
+                    @*<td>
+                            @Html.DisplayFor(modelItem => item.Usuario.NombreTipo)
+                        </td>*@
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Nombre)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Motivo)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.FechaEvento)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.FechaRegistro)
+                    </td>
+                    <td>
+                        @*@Html.DisplayFor(modelItem => item.Autorizado)*@
+
+                        @if (item.Autorizado == "Pendiente")
+                        {
+                            <span class="fa fa-times-circle fa-2x" title="@item.Autorizado" style="color:red;"></span>
+                        }
+                        else
+                        {
+                            if (item.Autorizado == "Autorizado")
+                            {
+                                <span class="fa fa-check-circle fa-2x" title="@item.Autorizado" style="color:green;"></span>
+
+                            }
+
+                        }
+                    </td>
+                    @*<td>
+                            @Html.DisplayFor(modelItem => item.Archivo)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.AcuseEntrega)
+                        </td>*@
+                    <td>
+                        @*@Html.ActionLink("Edit", "Edit", new { id = item.Identificador }) |*@
+                        @Html.ActionLink("Detalles", "Details", new { id = item.Identificador }) |
+                        @*@Html.ActionLink("Delete", "Delete", new { id = item.Identificador })*@
+                    </td>
+                </tr>
+            }
+
+        </table>
+
+    }
+
+
+
+}
+else
+{
+    if (FrontUser.TienePermiso(RolesPermisos.vista_administrador))
+    {
+        <h2>Eres un administrador</h2>
+
+
+        <table class="table table-striped">
+            <tr>
+                <th>
+                    @Html.DisplayNameFor(model => model.Usuario.Nombre)
+                </th>
+                @*<th>
+                        @Html.DisplayNameFor(model => model.Usuario.NombreTipo)
+                    </th>*@
+                <th>
+                    Unidad
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.Reconocimientos.Motivo)
+                </th>
+                <th>
+                    Fecha de solicitud
+                </th>
+                @*<th>
+                        @Html.DisplayNameFor(model => model.FechaRegistro)
+                    </th>*@
+                <th>
+                    Estatus
+                </th>
+                @*<th>
+                        @Html.DisplayNameFor(model => model.Archivo)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.AcuseEntrega)
+                    </th>*@
+                <th></th>
+            </tr>
+
+            @foreach (var item in Model)
+            {
+
+
+                <tr>
+                    <td>
+                        @*@Html.DisplayFor(modelItem => item.Usuario.Nombre)*@
+                        @*@m  @item.Usuario.ApellidoP  @item.Usuario.ApellidoM*@
+                    </td>
+                    @*<td>
+                            @Html.DisplayFor(modelItem => item.Usuario.NombreTipo)
+                        </td>*@
+                    <td>
+                        @*@Html.DisplayFor(modelItem => item.Usuario.Unidad.Nombre)*@
+                    </td>
+                    <td>
+                        @*@Html.DisplayFor(modelItem => item.Usuario.Unidad)*@
+                    </td>
+                    <td>
+                        @*@Html.DisplayFor(modelItem => item.Reconocimientos.FechaRegistro)*@
+                    </td>
+                    @*<td>
+                            @Html.DisplayFor(modelItem => item.FechaRegistro)
+                        </td>*@
+                    <td>
+                        @*@Html.DisplayFor(modelItem => item.Autorizado)*@
+
+                        @*@if (item.Reconocimientos.Autorizado == "Pendiente")
+                            {
+                                <span class="fa fa-times-circle fa-2x" title="@item.Reconocimientos.Autorizado" style="color:red;"></span>
+                            }
+                            else
+                            {
+                                if (item.Reconocimientos.Autorizado == "Autorizado")
+                                {
+                                    <span class="fa fa-check-circle fa-2x" title="@item.Reconocimientos.Autorizado" style="color:green;"></span>
+
+                                }
+
+                            }*@
+                    </td>
+                    @*<td>
+                            @Html.DisplayFor(modelItem => item.Archivo)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.AcuseEntrega)
+                        </td>*@
+                    <td>
+
+                        @*@Html.ActionLink("Atender", "Edit", new { id = item.Reconocimientos.Identificador }, new { @class = "" }) |
+
+                            @Html.ActionLink("Detalles", "Details", new { id = item.Reconocimientos.Identificador })*@
+
+
+
+
+
+
+
+
+
+                        @*@Html.ActionLink("Delete", "Delete", new { id = item.Identificador })*@
+                    </td>
+                </tr>
+            }
+
+        </table>
+
+    }
+    else
+    {
+        if (FrontUser.TienePermiso(RolesPermisos.vista_supeadministrador))
+        {
+            <h2>Eres un supr administrador</h2>
+
+            <table class="table table-striped">
+                <tr>
+                    <th>
+                        @*@Html.DisplayNameFor(model => model.Reconocimientos.Nombre)*@
+                    </th>
+                    @*<th>
+                            @Html.DisplayNameFor(model => model.Usuario.NombreTipo)
+                        </th>*@
+                    <th>
+                        Unidad
+                    </th>
+                    <th>
+                        @*@Html.DisplayNameFor(model => model.Reconocimientos.Motivo)*@
+                    </th>
+                    <th>
+                        Fecha de solicitud
+                    </th>
+                    @*<th>
+                            @Html.DisplayNameFor(model => model.FechaRegistro)
+                        </th>*@
+                    <th>
+                        Estatus
+                    </th>
+                    @*<th>
+                            @Html.DisplayNameFor(model => model.Archivo)
+                        </th>
+                        <th>
+                            @Html.DisplayNameFor(model => model.AcuseEntrega)
+                        </th>*@
+                    <th></th>
+                </tr>
+
+                @foreach (var item in Model)
+                {
+
+
+                    <tr>
+                        <td>
+                            @*@Html.DisplayFor(modelItem => item.Usuario.Nombre)*@
+                            @*@item.Usuario.Nombre  @item.Usuario.ApellidoP  @item.Usuario.ApellidoM*@
+                        </td>
+                        @*<td>
+                                @Html.DisplayFor(modelItem => item.Usuario.NombreTipo)
+                            </td>*@
+                        <td>
+                            @*@Html.DisplayFor(modelItem => item.Usuario.Unidad.Nombre)*@
+                        </td>
+                        <td>
+                            @*@Html.DisplayFor(modelItem => item.Reconocimientos.Motivo)*@
+                        </td>
+                        <td>
+                            @*@Html.DisplayFor(modelItem => item.Reconocimientos.FechaRegistro)*@
+                        </td>
+                        @*<td>
+                                @Html.DisplayFor(modelItem => item.FechaRegistro)
+                            </td>*@
+                        <td>
+                            @*@Html.DisplayFor(modelItem => item.Autorizado)*@
+
+                            @*@if (item.Reconocimientos.Autorizado == "Pendiente")
+                                {
+                                    <span class="fa fa-times-circle fa-2x" title="@item.Reconocimientos.Autorizado" style="color:red;"></span>
+                                }
+                                else
+                                {
+                                    if (item.Reconocimientos.Autorizado == "Autorizado")
+                                    {
+                                        <span class="fa fa-check-circle fa-2x" title="@item.Reconocimientos.Autorizado" style="color:green;"></span>
+
+                                    }
+
+                                }*@
+                        </td>
+                        @*<td>
+                                @Html.DisplayFor(modelItem => item.Archivo)
+                            </td>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.AcuseEntrega)
+                            </td>*@
+                        <td>
+
+                            @*@Html.ActionLink("Atender", "SubirArchivos", new { id = item.Reconocimientos.Identificador }, new { @class = "" }) |
+
+                                @Html.ActionLink("Detalles", "Details", new { id = item.Reconocimientos.Identificador })*@
+
+
+
+
+
+
+
+
+
+                            @*@Html.ActionLink("Delete", "Delete", new { id = item.Identificador })*@
+                        </td>
+                    </tr>
+                }
+
+            </table>
+
+        }
+
+    }
+}

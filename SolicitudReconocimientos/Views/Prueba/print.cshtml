@@ -1,0 +1,142 @@
+﻿@model SolicitudReconocimientos.Models.Reconocimientos
+@{ 
+    var dia= System.DateTime.Today.Month;
+}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>RECONOCIEMIENTO</title>
+
+    <link href="~/Assets1/css/rec.css" rel="stylesheet" />
+
+    
+    <script>
+        $(document).ready(function () {
+            var elem = document.getElementById('para');
+            this.value = this.value.toUpperCase();
+        });
+    </script>
+</head>
+
+<body>
+
+
+
+    <img class="logo" src="~/Imagenes/umb.PNG" />
+    <br>
+    <br>
+    <br>
+
+    <p class="encabezado ">La Universidad Mexiquense del Bicentenario, otorga el presente </p>
+    <p class="reconocimiento ">
+        <strong>@Model.TipoDocumento.Nombre.ToUpper()</strong>
+        <br>
+
+        @*<textarea placeholder=" Escribir a la/a el" value="" class="el"></textarea>*@
+        <input type="text" class="el" value="@Model.Quien.Nombre" />
+        <br />
+        <strong>
+            <span id="para" class="nombre col-md-12">@Model.Nombre.ToUpper() </span>
+        </strong>
+        @*<strong><input type="text" id="para" class="nombre col-md-6" value="@Model.Nombre.ToUpper()" /></strong>*@
+
+        <br />
+
+        @*<textarea placeholder="Escribir el Nombre" class="nombre" name="nombre"></textarea>
+            <br>
+            <textarea placeholder="Escribir el Puesto" class="puesto hidden" name="puesto"></textarea>*@
+        <textarea placeholder="" value="" class="motivo " name="motivo" rows="4" cols="50">@Model.Motivo</textarea>
+
+    </p>
+    <br>
+    <br>
+    <p class="ul">
+
+        @if (Model.Firma.Nombre == "DR. PABLO BEDOLLA LÓPEZ")
+        {
+            @Model.Firma.Nombre <br>
+        <p style="text-align:center">RECTOR</p>
+    }
+    else
+    {
+        if (Model.Firma.Nombre == "FANNY NELIA TERRÓN BOTELLO")
+        {
+            @Model.Firma.Nombre <br><p style="text-align:center">DIRECTORA DE ADMINISTRACION Y FINANZAS</p>
+        }
+    }
+        @if (Model.Firma.Nombre == "MTRO. JULIO MEJÍA GÓMEZ")
+        {
+
+            @Model.Firma.Nombre <br><p style="text-align:center">COORDINADOR DE UNIDADES</p>
+        }
+
+
+        @*@Model.Firma.Nombre <br> RECTOR*@
+        </p>
+        <br>
+        <br>
+
+        <p class="ul">
+            @if (dia == 1)
+            {
+
+                <textarea placeholder="Fecha" class="fecha" name="fecha">O c o y o a c a c,   E s t a d o   d e   M é x i c o; E n e r o   2 0 2 0</textarea>
+            }
+            else if (dia == 2)
+            {
+                <textarea placeholder="Fecha" class="fecha" name="fecha">O c o y o a c a c,   E s t a d o   d e   M é x i c o; F e b r e r o   2 0 2 0</textarea>
+            }
+            else if (dia == 3)
+            {
+                <textarea placeholder="Fecha" class="fecha" name="fecha">O c o y o a c a c,   E s t a d o   d e   M é x i c o; M a r z o   2 0 2 0</textarea>
+            }
+            else if (dia == 4)
+            {
+                <textarea placeholder="Fecha" class="fecha" name="fecha">O c o y o a c a c,   E s t a d o   d e   M é x i c o; A b r i l   2 0 2 0</textarea>
+            }
+            else if (dia == 5)
+            {
+                <textarea placeholder="Fecha" class="fecha" name="fecha">O c o y o a c a c,   E s t a d o   d e   M é x i c o; M a y o   2 0 2 0</textarea>
+            }
+            else if (dia == 6)
+            {
+                <textarea placeholder="Fecha" class="fecha" name="fecha">O c o y o a c a c,   E s t a d o   d e   M é x i c o; J u n i o   2 0 2 0</textarea>
+            }
+            else if (dia == 7)
+            {
+                <textarea placeholder="Fecha" class="fecha" name="fecha">O c o y o a c a c,   E s t a d o   d e   M é x i c o; J u l i o   2 0 2 0</textarea>
+            }
+            else if (dia == 8)
+            {
+                <textarea placeholder="Fecha" class="fecha" name="fecha">O c o y o a c a c,   E s t a d o   d e   M é x i c o; A g o s t o   2 0 2 0</textarea>
+            }
+            else if (dia == 9)
+            {
+                <textarea placeholder="Fecha" class="fecha" name="fecha">O c o y o a c a c,   E s t a d o   d e   M é x i c o;   S e p t i e m b r e   2 0 2 0</textarea>
+            }
+            else if (dia == 10)
+            {
+                <textarea placeholder="Fecha" class="fecha" name="fecha">O c o y o a c a c,   E s t a d o   d e   M é x i c o;   O c t u b r e   2 0 2 0</textarea>
+            }
+            else if (dia == 11)
+            {
+                <textarea placeholder="Fecha" class="fecha" name="fecha">O c o y o a c a c,   E s t a d o   d e   M é x i c o;   N o v i e m b r e   2 0 2 0</textarea>
+            }
+            else if (dia == 12)
+            {
+                <textarea placeholder="Fecha" class="fecha" name="fecha">O c o y o a c a c,   E s t a d o   d e   M é x i c o;   D i c i e m b r e   2 0 2 0</textarea>
+            }
+        </p>
+        <p class="folio">
+            F O L I O &emsp;
+            <input type="textarea" name="folio" placeholder="Folio" style="font-family:Georgia" value="@Model.Folio">
+        </p>
+
+        <img src="~/Imagenes/linea.PNG" class="linea" />
+        @*<button id="imprimir"> imprimir</button>*@
+
+
+
+    </body>
+
+</html>

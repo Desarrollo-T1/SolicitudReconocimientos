@@ -1,0 +1,39 @@
+﻿@model IEnumerable<SolicitudReconocimientos.Models.UsuarioReconocimiento>
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>Index</h2>
+
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.Reconocimientos.Nombre)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Usuario.NombreTipo)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.Reconocimientos.Nombre)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Usuario.NombreTipo)
+        </td>
+        <td>
+            @Html.ActionLink("Edit", "Edit", new { id=item.Indentificador }) |
+            @Html.ActionLink("Details", "Details", new { id=item.Indentificador }) |
+            @Html.ActionLink("Delete", "Delete", new { id=item.Indentificador })
+        </td>
+    </tr>
+}
+
+</table>

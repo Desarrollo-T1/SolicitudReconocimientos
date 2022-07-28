@@ -1,0 +1,83 @@
+﻿@model SolicitudReconocimientos.Models.Usuario
+
+@{
+    ViewBag.Title = "Details";
+    Layout = "~/Views/Shared/_MasterAdmin.cshtml";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>Usuario</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.Rol.Nombre)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Rol.Nombre)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Unidad.Nombre)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Unidad.Nombre)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.NombreTipo)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.NombreTipo)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.UserName)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.UserName)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Contraseña)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Contraseña)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Nombre)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Nombre)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.ApellidoP)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.ApellidoP)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.ApellidoM)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.ApellidoM)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.id }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>

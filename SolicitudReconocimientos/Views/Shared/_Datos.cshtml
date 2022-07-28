@@ -1,0 +1,60 @@
+﻿@model System.Data.DataTable
+@using System.Data;
+
+
+@if (Model != null)
+{
+    <table class="table table-striped">
+        <thead>
+            <tr>
+                @foreach (DataColumn col in Model.Columns)
+                {
+
+                    <th>@col.ColumnName</th>
+                }
+                
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (DataRow row in Model.Rows)
+            {
+            <tr>
+                @foreach (DataColumn col in Model.Columns)
+                {
+                    if (row[col.ColumnName].ToString() == "Reconocimiento")
+                    {
+                        <td> @*<input type="text" name="@col.ColumnName" required id="@col.ColumnName" value="1" />*@
+                <select name="@col.ColumnName">
+                    <option selected value="2">@row[col.ColumnName]</option>
+                </select>
+                </td>
+                    }
+                    else
+                    {
+                        if (row[col.ColumnName].ToString() == "Diploma")
+                        {
+                            <td> @*<input type="text" name="@col.ColumnName" required id="@col.ColumnName" value="2" />*@ 
+                                 <select name="@col.ColumnName">
+                                     <option selected value="1">@row[col.ColumnName]</option>
+                                 </select>
+                           </td> 
+
+
+                        }
+
+                        else
+                        {
+
+                            <td> <input type="text" name="@col.ColumnName" required id="@col.ColumnName" value="@row[col.ColumnName]" /> </td>
+                        }
+                    }
+
+
+
+                }
+
+            </tr>
+            }
+        </tbody>
+    </table>
+}

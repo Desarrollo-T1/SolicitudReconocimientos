@@ -1,0 +1,270 @@
+<?xml version="1.0" encoding="utf-8"?>
+<xs:schema xmlns:tns="http://service.ceroPapel.dgsei.edomex.gob.mx/" xmlns:ns1="http://jaxb.dev.java.net/array" targetNamespace="http://service.ceroPapel.dgsei.edomex.gob.mx/" version="1.0" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+  <xs:import schemaLocation="http://qasistemas2.edomex.gob.mx:80/ceroPapel/webService?xsd=2" namespace="http://jaxb.dev.java.net/array" />
+  <xs:element name="UnsupportedEncodingException" type="tns:UnsupportedEncodingException" />
+  <xs:element name="WSException" type="tns:WSException" />
+  <xs:element name="cancelaSolicitud" type="tns:cancelaSolicitud" />
+  <xs:element name="cancelaSolicitudResponse" type="tns:cancelaSolicitudResponse" />
+  <xs:element name="existeSolicitudTerminada" type="tns:existeSolicitudTerminada" />
+  <xs:element name="existeSolicitudTerminadaResponse" type="tns:existeSolicitudTerminadaResponse" />
+  <xs:element name="firmarSolicitud" type="tns:firmarSolicitud" />
+  <xs:element name="firmarSolicitudResponse" type="tns:firmarSolicitudResponse" />
+  <xs:element name="identificadorSolicitud" type="tns:identificadorSolicitud" />
+  <xs:element name="identificadorSolicitudHashDocumentoFirmado" type="tns:identificadorSolicitudHashDocumentoFirmado" />
+  <xs:element name="identificadorSolicitudHashDocumentoFirmadoResponse" type="tns:identificadorSolicitudHashDocumentoFirmadoResponse" />
+  <xs:element name="identificadorSolicitudResponse" type="tns:identificadorSolicitudResponse" />
+  <xs:element name="nuevaSolicitud" type="tns:nuevaSolicitud" />
+  <xs:element name="nuevaSolicitudBatch" type="tns:nuevaSolicitudBatch" />
+  <xs:element name="nuevaSolicitudBatchResponse" type="tns:nuevaSolicitudBatchResponse" />
+  <xs:element name="nuevaSolicitudBatchSHA2" type="tns:nuevaSolicitudBatchSHA2" />
+  <xs:element name="nuevaSolicitudBatchSHA2Response" type="tns:nuevaSolicitudBatchSHA2Response" />
+  <xs:element name="nuevaSolicitudResponse" type="tns:nuevaSolicitudResponse" />
+  <xs:element name="obtenerDocumentoFirmado" type="tns:obtenerDocumentoFirmado" />
+  <xs:element name="obtenerDocumentoFirmadoIdentificador" type="tns:obtenerDocumentoFirmadoIdentificador" />
+  <xs:element name="obtenerDocumentoFirmadoIdentificadorResponse" type="tns:obtenerDocumentoFirmadoIdentificadorResponse" />
+  <xs:element name="obtenerDocumentoFirmadoResponse" type="tns:obtenerDocumentoFirmadoResponse" />
+  <xs:element name="obtenerDocumentoOriginal" type="tns:obtenerDocumentoOriginal" />
+  <xs:element name="obtenerDocumentoOriginalResponse" type="tns:obtenerDocumentoOriginalResponse" />
+  <xs:element name="obtenerEvidenciaImprimible" type="tns:obtenerEvidenciaImprimible" />
+  <xs:element name="obtenerEvidenciaImprimibleResponse" type="tns:obtenerEvidenciaImprimibleResponse" />
+  <xs:element name="obtenerEvidenciaXml" type="tns:obtenerEvidenciaXml" />
+  <xs:element name="obtenerEvidenciaXmlResponse" type="tns:obtenerEvidenciaXmlResponse" />
+  <xs:element name="obtenerEvidenciaXmlSHA2" type="tns:obtenerEvidenciaXmlSHA2" />
+  <xs:element name="obtenerEvidenciaXmlSHA2Response" type="tns:obtenerEvidenciaXmlSHA2Response" />
+  <xs:element name="reasignarSolicitud" type="tns:reasignarSolicitud" />
+  <xs:element name="reasignarSolicitudResponse" type="tns:reasignarSolicitudResponse" />
+  <xs:element name="reenviarSolicitud" type="tns:reenviarSolicitud" />
+  <xs:element name="reenviarSolicitudResponse" type="tns:reenviarSolicitudResponse" />
+  <xs:element name="solicitudValidador" type="tns:solicitudValidador" />
+  <xs:element name="solicitudValidadorIdentificador" type="tns:solicitudValidadorIdentificador" />
+  <xs:element name="solicitudValidadorIdentificadorResponse" type="tns:solicitudValidadorIdentificadorResponse" />
+  <xs:element name="solicitudValidadorResponse" type="tns:solicitudValidadorResponse" />
+  <xs:element name="solicitudValidadorSistema" type="tns:solicitudValidadorSistema" />
+  <xs:element name="solicitudValidadorSistemaResponse" type="tns:solicitudValidadorSistemaResponse" />
+  <xs:complexType name="existeSolicitudTerminada">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="hashSolicitud" type="xs:string" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="existeSolicitudTerminadaResponse">
+    <xs:sequence>
+      <xs:element name="return" type="xs:boolean" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="WSException">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="errorCode" type="xs:string" />
+      <xs:element minOccurs="0" name="message" type="xs:string" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="obtenerEvidenciaImprimible">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="hashSolicitud" type="xs:string" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="obtenerEvidenciaImprimibleResponse">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="return" type="tns:documentoVO" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="documentoVO">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="contenido" type="xs:base64Binary" />
+      <xs:element minOccurs="0" name="hash" type="xs:string" />
+      <xs:element minOccurs="0" name="nombre" type="xs:string" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="obtenerEvidenciaXml">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="hashSolicitud" type="xs:string" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="obtenerEvidenciaXmlResponse">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="return" type="tns:documentoVO" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="obtenerEvidenciaXmlSHA2">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="hashSolicitud" type="xs:string" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="obtenerEvidenciaXmlSHA2Response">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="return" type="tns:documentoVO" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="solicitudValidadorIdentificador">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="identificador" type="xs:string" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="solicitudValidadorIdentificadorResponse">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="return" type="tns:solicitudVO" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="solicitudVO">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="asunto" type="xs:string" />
+      <xs:element minOccurs="0" name="documento" type="tns:documentoVO" />
+      <xs:element minOccurs="0" name="fechaSolicitud" type="xs:dateTime" />
+      <xs:element minOccurs="0" name="fechaVencimiento" type="xs:dateTime" />
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="firmantes" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="hash" type="xs:string" />
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="listaFirmantes" nillable="true" type="ns1:stringArray" />
+      <xs:element name="listaOrdenada" type="xs:boolean" />
+      <xs:element minOccurs="0" name="sistemaSolicitante" type="xs:string" />
+      <xs:element minOccurs="0" name="solicitante" type="xs:string" />
+      <xs:element name="tipoDocumento" type="xs:int" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="solicitudValidador">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="identificador" type="xs:string" />
+      <xs:element minOccurs="0" name="cuts" type="xs:string" />
+      <xs:element minOccurs="0" name="password" type="xs:string" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="solicitudValidadorResponse">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="return" type="tns:solicitudVO" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="obtenerDocumentoOriginal">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="hashSolicitud" type="xs:string" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="obtenerDocumentoOriginalResponse">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="return" type="tns:documentoVO" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="cancelaSolicitud">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="hashSolicitud" type="xs:string" />
+      <xs:element minOccurs="0" name="justificacion" type="xs:string" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="cancelaSolicitudResponse">
+    <xs:sequence />
+  </xs:complexType>
+  <xs:complexType name="reenviarSolicitud">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="hashSolicitud" type="xs:string" />
+      <xs:element minOccurs="0" name="justificacion" type="xs:string" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="reenviarSolicitudResponse">
+    <xs:sequence />
+  </xs:complexType>
+  <xs:complexType name="solicitudValidadorSistema">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="identificador" type="xs:string" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="solicitudValidadorSistemaResponse">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="return" type="tns:solicitudVO" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="obtenerDocumentoFirmado">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="hashSolicitud" type="xs:string" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="obtenerDocumentoFirmadoResponse">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="return" type="tns:documentoVO" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="obtenerDocumentoFirmadoIdentificador">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="identificador" type="xs:string" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="obtenerDocumentoFirmadoIdentificadorResponse">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="return" type="tns:documentoVO" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="identificadorSolicitudHashDocumentoFirmado">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="hash" type="xs:string" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="identificadorSolicitudHashDocumentoFirmadoResponse">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="return" type="xs:string" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="nuevaSolicitudBatch">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="solicitud" type="tns:solicitudVO" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="nuevaSolicitudBatchResponse">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="return" type="xs:string" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="nuevaSolicitudBatchSHA2">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="solicitud" type="tns:solicitudVO" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="nuevaSolicitudBatchSHA2Response">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="return" type="xs:string" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="UnsupportedEncodingException">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="message" type="xs:string" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="reasignarSolicitud">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="hashSolicitud" type="xs:string" />
+      <xs:element minOccurs="0" name="justificacion" type="xs:string" />
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="listaFirmantes" type="xs:string" />
+      <xs:element name="listaOrdenada" type="xs:boolean" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="reasignarSolicitudResponse">
+    <xs:sequence />
+  </xs:complexType>
+  <xs:complexType name="nuevaSolicitud">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="solicitud" type="tns:solicitudVO" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="nuevaSolicitudResponse">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="return" type="xs:string" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="identificadorSolicitud">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="hashSolicitud" type="xs:string" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="identificadorSolicitudResponse">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="return" type="xs:string" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="firmarSolicitud">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="hashSolicitud" type="xs:string" />
+      <xs:element minOccurs="0" name="firmanteCuts" type="xs:string" />
+      <xs:element minOccurs="0" name="pkcs7" type="xs:base64Binary" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="firmarSolicitudResponse">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="return" type="xs:string" />
+    </xs:sequence>
+  </xs:complexType>
+</xs:schema>

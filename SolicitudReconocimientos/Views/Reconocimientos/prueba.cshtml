@@ -1,0 +1,420 @@
+﻿@model IEnumerable<SolicitudReconocimientos.Models.Reconocimientos>
+
+@{
+
+    ViewBag.Title = "Index";
+
+    Layout = "~/Views/Shared/_Masteradmin.cshtml";
+    IEnumerable<SolicitudReconocimientos.Models.Reconocimientos> t = ViewBag.total;
+    IEnumerable<SolicitudReconocimientos.Models.UsuarioReconocimiento> solicitudes = ViewBag.lista;
+    IEnumerable<SolicitudReconocimientos.Models.UsuarioReconocimiento> total = ViewBag.todos;
+
+}
+
+
+
+
+@*<h2>Index</h2>*@
+
+
+
+
+
+@if (FrontUser.TienePermiso(RolesPermisos.vista_usuario))
+{
+    if (t.Count() <= 0)
+    {
+        <br />
+        <div align="center"><h1>No tiene solicitudes</h1></div>
+        <h4><a class="btn btn-primary btn-large" href="~/Reconocimientos/Create/">Nuevo reconocimiento</a></h4>
+        @Html.ActionLink("Cargar desde excel", "Upload", new { }, new { @class = "btn btn-primary btn-larg" })
+    }
+    else
+    {
+        <br />
+        <h3>Lista de solicitudes</h3> <br />
+        <p>
+            @Html.ActionLink("Nuevo reconocimiento", "Create", new { }, new { @class = "btn btn-primary btn-larg" })
+            @Html.ActionLink("Cargar desde excel", "Upload", new { }, new { @class = "btn btn-primary btn-larg" })
+        </p>
+
+
+
+
+
+        @*@Html.Partial("_Table")*@
+        <table class="table table-striped">
+            <tr>
+                <th>
+                    @*@Html.DisplayNameFor(model => model.UsuarioReco)*@
+                    Nombre
+                </th>
+                @*<th>
+                        @Html.DisplayNameFor(model => model.Usuario.NombreTipo)
+                    </th>*@
+                <th>
+                    @*@Html.DisplayNameFor(model => model.Nombre)*@
+                    Unidad
+                </th>
+                <th>
+                    @*@Html.DisplayNameFor(model => model.Nombre)*@
+                    Folio
+                </th>
+                <th>
+                    @*@Html.DisplayNameFor(model => model.Motivo)*@
+                    Motivo
+                </th>
+                <th>
+                    @*@Html.DisplayNameFor(model => model.FechaEvento)*@
+                    Fecha evento
+                </th>
+                <th>
+                    @*@Html.DisplayNameFor(model => model.FechaRegistro)*@
+                    Fecha registro
+                </th>
+                <th>
+                    Autorizado
+                </th>
+                @*<th>
+                        Archivo
+                    </th>*@
+                <th>-</th>
+                <th>
+                    Detalle
+                </th>
+                @*<th>
+                        @Html.DisplayNameFor(model => model.Archivo)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.AcuseEntrega)
+                    </th>*@
+                @*<th></th>*@
+            </tr>
+
+            @foreach (var item in solicitudes)
+            {
+
+
+                <tr>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Usuario.Nombre) @Html.DisplayFor(modelItem => item.Usuario.ApellidoP) @Html.DisplayFor(modelItem => item.Usuario.ApellidoM)
+                    </td>
+                    @*<td>
+                            @Html.DisplayFor(modelItem => item.Usuario.NombreTipo)
+                        </td>*@
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Usuario.Unidad.Nombre)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Reconocimientos.Folio)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Reconocimientos.Motivo)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Reconocimientos.FechaEvento)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Reconocimientos.FechaRegistro)
+                    </td>
+                    <td align="center">
+                        @*@Html.DisplayFor(modelItem => item.Autorizado)*@
+
+                        @if (item.Reconocimientos.Autorizado == "Pendiente")
+                        {
+                            <span class="fa fa-times-circle fa-2x" title="@item.Reconocimientos.Autorizado" style="color:red;"></span>
+                        }
+                        else
+                        {
+                            if (item.Reconocimientos.Autorizado == "Autorizado")
+                            {
+                                <span class="fa fa-check-circle fa-2x" title="@item.Reconocimientos.Autorizado" style="color:green;"></span>
+
+                            }
+
+                        }
+                    </td>
+                    @*<td>
+                            @Html.DisplayFor(modelItem => item.Reconocimientos.Archivo)
+                            <a title="Reconocimiento en PDF" href="~/Archivos/@item.Reconocimientos.Archivo">Consultar</a>
+                        </td>*@
+
+                    @*<td>
+                            @Html.DisplayFor(modelItem => item.AcuseEntrega)
+                        </td>*@
+                    <td>
+
+                        @Html.ActionLink("Editar", "EditUser", new { id = item.Reconocimientos.Identificador }, new { @class = "btn btn-default btn-larg" })
+
+                    </td>
+                    <td>
+                        @*@Html.ActionLink("Edit", "Edit", new { id = item.Identificador }) |*@
+                        @Html.ActionLink("+", "Details", new { id = item.Reconocimientos.Identificador }, new { @class = "btn btn-default btn-larg" })
+                        @*@Html.ActionLink("Delete", "Delete", new { id = item.Identificador })*@
+                    </td>
+                </tr>
+            }
+
+        </table>
+
+    }
+
+
+
+}
+else
+{
+    if (FrontUser.TienePermiso(RolesPermisos.vista_administrador))
+    {
+
+
+        <h4>Administrador: Abogado General</h4>
+        <br />
+
+        <table class="table table-striped">
+            <tr>
+                <th>
+                    Solicita
+                </th>
+                @*<th>
+                        @Html.DisplayNameFor(model => model.Usuario.NombreTipo)
+                    </th>*@
+                <th>
+                    Unidad
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.Motivo)
+                </th>
+                <th>
+                    Fecha de solicitud
+                </th>
+                @*<th>
+                        @Html.DisplayNameFor(model => model.FechaRegistro)
+                    </th>*@
+                <th>
+                    Autorizado
+                </th>
+
+                @*<th>
+                        @Html.DisplayNameFor(model => model.Archivo)
+                    </th>*@
+                @*<th>
+                        @Html.DisplayNameFor(model => model.AcuseEntrega)
+                    </th>*@
+                <th>-</th>
+                <th>Detalle</th>
+            </tr>
+
+            @foreach (var item in total)
+            {
+
+
+                <tr>
+                    <td>
+                        @*@Html.DisplayFor(modelItem => item.Usuario.Nombre)*@
+                        @item.Usuario.Nombre   @item.Usuario.ApellidoP  @item.Usuario.ApellidoM
+                    </td>
+                    @*<td>
+                            @Html.DisplayFor(modelItem => item.Usuario.NombreTipo)
+                        </td>*@
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Usuario.Unidad.Nombre)
+                    </td>
+                    @*<td>
+                            @Html.DisplayFor(modelItem => item.Usuario.Unidad)
+                        </td>*@
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Reconocimientos.Motivo)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Reconocimientos.FechaRegistro)
+                    </td>
+                    <td>
+                        @*@Html.DisplayFor(modelItem => item.Reconocimientos.Autorizado)*@
+
+                        @if (item.Reconocimientos.Autorizado == "Pendiente")
+                        {
+                            <span class="fa fa-times-circle fa-2x" title="@item.Reconocimientos.Autorizado" style="color:red;"></span>
+                        }
+                        else
+                        {
+                            if (item.Reconocimientos.Autorizado == "Autorizado")
+                            {
+                                <span class="fa fa-check-circle fa-2x" title="@item.Reconocimientos.Autorizado" style="color:green;"></span>
+
+                            }
+
+                        }
+                    </td>
+                    @*<td>
+                            <a title="Reconocimiento en PDF" href="~/Archivos/@item.Reconocimientos.Archivo">Consultar</a>
+                            @Html.DisplayFor(modelItem => item.Reconocimientos.Archivo)
+                        </td>*@
+
+                    @*<td>*@
+                    @*Acuse de entrega
+                        @Html.DisplayFor(modelItem => item.Reconocimientos.AcuseEntrega)*@
+                    @*</td>*@
+                    <td>
+
+                        @Html.ActionLink("Editar", "Edit", new { id = item.Reconocimientos.Identificador }, new { @class = "btn btn-default btn-larg" })
+
+                    </td>
+
+                    <td>
+                        @Html.ActionLink("+", "Details", new { id = item.Reconocimientos.Identificador }, new { @class = "btn btn-default btn-larg" })
+
+                        @*@Html.ActionLink("Delete", "Delete", new { id = item.Identificador })*@
+                    </td>
+                </tr>
+            }
+
+        </table>
+
+    }
+    else
+    {
+        if (FrontUser.TienePermiso(RolesPermisos.vista_supeadministrador))
+        {
+            <br />
+            <h4>Administrador: Unidad de Tecnologías de la Información</h4>
+            <br />
+
+            <table class="table table-striped">
+                <tr>
+                    <th>
+                        Solicita
+                    </th>
+                    @*<th>
+                            @Html.DisplayNameFor(model => model.Usuario.NombreTipo)
+                        </th>*@
+                    <th>
+                        Documento
+                    </th>
+                    <th>
+                        Unidad
+                    </th>
+                    <th>
+                        Fecha de solicitud
+                    </th>
+                    @*<th>
+                            @Html.DisplayNameFor(model => model.FechaRegistro)
+                        </th>*@
+                    <th>
+                        Autorizado
+                    </th>
+                    <th>
+                        Impreso
+                        @*@Html.DisplayNameFor(model => model.Archivo)*@
+                    </th>
+                    <th>
+                        Acuse
+                        @*@Html.DisplayNameFor(model => model.AcuseEntrega)*@
+                    </th>
+                    <th align="center">
+                        Archivos
+                    </th>
+
+                </tr>
+
+                @foreach (var item in total)
+                {
+
+
+                    <tr>
+                        <td>
+                            @*@Html.DisplayFor(modelItem => item.Usuario.Nombre)*@
+                            @item.Usuario.Nombre  @item.Usuario.ApellidoP  @item.Usuario.ApellidoM
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.Reconocimientos.TipoDocumento.Nombre)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.Usuario.Unidad.Nombre)
+                        </td>
+
+                        <td>
+                            @Html.DisplayFor(modelItem => item.Reconocimientos.FechaRegistro)
+                        </td>
+
+                        <td>
+                            @*@Html.DisplayFor(modelItem => item.Reconocimientos.Autorizado)*@
+
+                            @if (item.Reconocimientos.Autorizado == "Pendiente")
+                            {
+                                <span class="fa fa-times-circle fa-2x" title="@item.Reconocimientos.Autorizado" style="color:red;"></span>
+                            }
+                            else
+                            {
+                                if (item.Reconocimientos.Autorizado == "Autorizado")
+                                {
+                                    <span class="fa fa-check-circle fa-2x" title="@item.Reconocimientos.Autorizado" style="color:green;"></span>
+
+                                }
+
+                            }
+                        </td>
+                        <td>
+                            @if (item.Reconocimientos.Archivo == " ")
+                            {
+                                <strong>Aún no disponible</strong>
+                            }
+                            else
+                            if (item.Reconocimientos.Archivo != " ")
+                            {
+                                <a title="Reconocimiento en PDF" target="_blank" href="~/Archivos/@item.Reconocimientos.Archivo">Consultar</a>
+
+                            }
+
+                            @*@Html.DisplayFor(modelItem => item.Reconocimientos.Archivo)*@
+                        </td>
+                        <td>
+                            @if (item.Reconocimientos.AcuseEntrega == " ")
+                            {
+                                <strong>Aún no disponible</strong>
+                            }
+                            else if (item.Reconocimientos.AcuseEntrega != " ")
+                            {
+                                <a title="Acuse del Rec..." target="_blank" href="~/Acuses/@item.Reconocimientos.AcuseEntrega">Consultar</a>
+                            }
+
+
+                        </td>
+                        <td align="justify">
+                            @if (item.Reconocimientos.Autorizado == "Pendiente")
+                            {
+                                <a href="~/Reconocimientos/SubirArchivos/@item.Reconocimientos.Identificador" class="btn btn-default disabled">+</a>
+                            }
+                            else
+                            if (item.Reconocimientos.Autorizado == "Autorizado")
+                            {
+                                <a href="~/Reconocimientos/SubirArchivos/@item.Reconocimientos.Identificador" class="btn btn-default ">+</a>
+                            }
+
+                            @*@Html.ActionLink("+", "SubirArchivos", new { id = item.Reconocimientos.Identificador }, new { @class = "btn btn-default" })*@
+
+
+
+                        </td>
+
+                        @*<td>*@
+
+                        @*  @Html.ActionLink("+", "Details", new { id = item.Reconocimientos.Identificador }, new { @class = "btn btn-default btn-larg" })*@
+
+
+
+                        @*@Html.ActionLink("Delete", "Delete", new { id = item.Identificador })*@
+                        @*</td>*@
+                    </tr>
+                }
+
+            </table>
+
+        }
+
+    }
+}
+
+<a href="@Url.Action("print","Reconocimientos")" class="btn btn-success" target="_blank">Convertir pdf</a>
+
+

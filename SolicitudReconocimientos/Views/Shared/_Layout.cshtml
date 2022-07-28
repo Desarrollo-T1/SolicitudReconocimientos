@@ -1,0 +1,63 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta charset="utf-8" />
+    <title>
+        Sistema de Reconocimientos
+    </title>
+    <meta name="description" content="Latest updates and statistic charts">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+
+    <!--begin::Web font -->
+    <script src="https://ajax.googleapis.com/ajax/libs/webfont/1.6.16/webfont.js"></script>
+    <script>
+        WebFont.load({
+            google: { "families": ["Poppins:300,400,500,600,700", "Roboto:300,400,500,600,700"] },
+            active: function () {
+                sessionStorage.fonts = true;
+            }
+        });
+    </script>
+    <script src="~/scripts/jquery.js"></script>
+    <!--end::Web font -->
+    <!--begin::Base Styles -->
+    <link href="~/Assets1/vendors/base/vendors.bundle.css" rel="stylesheet" type="text/css" />
+    <link href="~/Assets1/demo/demo7/base/style.bundle.css" rel="stylesheet" type="text/css" />
+    <!--end::Base Styles -->
+    <link rel="shortcut icon" href="~/Assets1/demo/demo7/media/img/logo/favicon.png" />
+    <link rel="stylesheet" href="~/Assets1/vendors/base/vendors.bundle.css">
+
+
+    <link href="https://cdn.datatables.net/1.10.19/css/jquery.dataTables.min.css" rel="stylesheet" />
+    <script src="https://code.jquery.com/jquery-3.3.1.js"></script>
+    <script src="https://cdn.datatables.net/1.10.19/js/jquery.dataTables.min.js"></script>
+
+</head>
+<body class="m--skin- m-header--fixed m-header--fixed-mobile m-aside-left--enabled m-aside-left--skin-dark m-aside-left--offcanvas m-footer--push m-aside--offcanvas-default">
+
+    @RenderBody()
+    @*<script src="~/Scripts/jquery-1.10.2.min.js"></script>
+        <script src="~/Scripts/bootstrap.min.js"></script>*@
+
+
+
+    <script src="~/scripts/jquery.form.js"></script>
+    <script src="~/scripts/ini.js"></script>
+    <script src="~/scripts/jquery.validate.min.js"></script>
+
+    <script src="~/Assets1/vendors/base/vendors.bundle.js" type="text/javascript"></script>
+    <script src="~/Assets1/demo/demo7/base/scripts.bundle.js" type="text/javascript"></script>
+    <!--end::Base Scripts -->
+    <!--begin::Page Snippets -->
+    <script src="~/Assets1/snippets/pages/user/login.js" type="text/javascript"></script>
+</body>
+
+</html>
+<script>
+    $(document).ready(function () {
+        $('#example').DataTable();
+    });
+
+</script>
